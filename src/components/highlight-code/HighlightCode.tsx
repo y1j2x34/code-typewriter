@@ -6,11 +6,14 @@ import hljs from 'highlight.js';
 import { createEffect, createSignal, on } from 'solid-js';
 import Typed from 'typed.js';
 
+(window as any).hljs = hljs;
+
 export type HighlightCodeProps = {
     code: string;
     theme: ThemeName;
     language: LanguageType;
     typewriter?: boolean | {};
+    class?: string;
 };
 
 export function HighlightCode(props: HighlightCodeProps) {
@@ -41,20 +44,26 @@ export function HighlightCode(props: HighlightCodeProps) {
         if (!codeElement) {
             return;
         }
+        const code = highlightCode();
+        if (!code) {
+            return;
+        }
         const type = new Typed(codeElement, {
-            strings: [highlightCode()],
+            strings: [code],
             fadeOut: true,
             typeSpeed: 10,
+            smartBackspace: true,
         });
-        type.stop();
         return () => {
             type.destroy();
         };
     });
     return (
-        <pre class={`theme-${props.theme.replace('/', '-')} text-sm relative overflow-hidden max-w-full`}>
-            <div class="hljs mb-0 p-4 block min-h-full overflow-auto">
-                <code ref={codeElement} innerHTML={highlightCode()}></code>
+        <pre
+            class={`${props.class || ''} theme-${props.theme.replace('/', '-')} text-sm relative overflow-hidden max-w-full hljs`}
+        >
+            <div class="mb-0 p-4 block min-h-full overflow-auto">
+                <code ref={codeElement}></code>
             </div>
         </pre>
     );
