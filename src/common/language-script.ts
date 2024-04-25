@@ -1,6 +1,6 @@
 import { loadScript } from '@/common/loadScript';
 import { LanguageType } from './language-types';
-import { HighlightJsVersion } from './version';
+import { HighlightJsVersion } from '../highlight/version';
 
 export function getLanguageScript(language: LanguageType) {
     return `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/${HighlightJsVersion}/languages/${language}.min.js`;

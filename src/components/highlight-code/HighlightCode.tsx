@@ -1,10 +1,10 @@
-import { loadLanguageScript } from '@/highlight/language-script';
-import { LanguageType } from '@/highlight/language-types';
+import { loadLanguageScript } from '@/common/language-script';
+import { LanguageType } from '@/common/language-types';
 import { loadTheme } from '@/highlight/theme-link';
 import { ThemeName } from '@/highlight/theme-names';
 import hljs from 'highlight.js';
 import { createEffect, createSignal, on } from 'solid-js';
-import Typed from 'typed.js';
+import Typed, { TypedOptions } from 'typed.js';
 
 (window as any).hljs = hljs;
 
@@ -12,7 +12,7 @@ export type HighlightCodeProps = {
     code: string;
     theme: ThemeName;
     language: LanguageType;
-    typewriter?: boolean | {};
+    typewriter?: boolean | TypedOptions;
     class?: string;
 };
 
@@ -48,11 +48,13 @@ export function HighlightCode(props: HighlightCodeProps) {
         if (!code) {
             return;
         }
+        const userOptions = typeof props.typewriter === 'boolean' ? {} : props.typewriter;
         const type = new Typed(codeElement, {
-            strings: [code],
             fadeOut: true,
-            typeSpeed: 10,
+            typeSpeed: 1,
             smartBackspace: true,
+            ...userOptions,
+            strings: [code],
         });
         return () => {
             type.destroy();
@@ -62,8 +64,11 @@ export function HighlightCode(props: HighlightCodeProps) {
         <pre
             class={`${props.class || ''} theme-${props.theme.replace('/', '-')} text-sm relative overflow-hidden max-w-full hljs`}
         >
-            <div class="mb-0 p-4 block min-h-full overflow-auto">
-                <code ref={codeElement}></code>
+            <div class="mb-0 p-4 block min-h-full overflow-auto relative">
+                <code
+                    ref={codeElement}
+                    class=" whitespace-pre-wrap break-all overflow-hidden block max-w-full h-full"
+                ></code>
             </div>
         </pre>
     );
