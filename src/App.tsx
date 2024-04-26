@@ -18,19 +18,19 @@ export function App() {
         });
     }
     return (
-        <div class="text-4xl text-green-700 text-center py-10 w-[900px] mx-auto flex flex-col">
+        <div class="text-4xl text-green-700 text-center py-10 w-[1200px] mx-auto flex flex-col">
             <div class="flex-1">
                 <canvas
                     ref={canvas}
                     width="900"
                     height="900"
-                    class="border-solid border border-slate-50 bg-slate-950"
+                    class="border-solid border border-slate-50 bg-slate-950 mx-auto"
                 ></canvas>
             </div>
             <div class="flex-1 w-full mt-10">
                 <Frame title="Magical Light Tunnel.js" theme="light">
                     <HighlightCode
-                        class="py-[21px] w-full"
+                        class="py-[21px] w-full max-h-96"
                         code={code}
                         theme="base16/dracula"
                         language="javascript"

@@ -19,6 +19,7 @@ export type HighlightCodeProps = {
 export function HighlightCode(props: HighlightCodeProps) {
     const [highlightCode, setHighlightCode] = createSignal('');
     let codeElement: HTMLElement | undefined;
+    let preElement: HTMLPreElement | undefined;
     createEffect(
         on(
             () => [props.language, props.code],
@@ -49,20 +50,33 @@ export function HighlightCode(props: HighlightCodeProps) {
             return;
         }
         const userOptions = typeof props.typewriter === 'boolean' ? {} : props.typewriter;
+        let timmer: any;
         const type = new Typed(codeElement, {
             fadeOut: true,
-            typeSpeed: 1,
-            smartBackspace: true,
+            typeSpeed: 0.01,
             ...userOptions,
             strings: [code],
+            onBegin: () => {
+                timmer = setInterval(() => {
+                    type.cursor.scrollIntoView({
+                        behavior: 'smooth',
+                    });
+                }, 100);
+            },
+            onComplete: () => {
+                clearInterval(timmer);
+            },
         });
+
         return () => {
+            clearInterval(timmer);
             type.destroy();
         };
     });
     return (
         <pre
-            class={`${props.class || ''} theme-${props.theme.replace('/', '-')} text-sm relative overflow-hidden max-w-full hljs`}
+            class={`${props.class || ''} theme-${props.theme.replace('/', '-')} text-sm relative overflow-auto max-w-full hljs scrollbar`}
+            ref={preElement}
         >
             <div class="mb-0 p-4 block min-h-full overflow-auto relative">
                 <code

@@ -23,13 +23,11 @@
     "main": "./dist/index.js",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
+    "files": ["dist"],
     "scripts": {
         "build": "vite build",
         "commit": "commit",
-        "start": "vite",
+        "start": "vite --host 0.0.0.0",
         "lint": "eslint . -c ./.eslintrc.cjs",
         "prepare": "husky install",
         "test": "vitest",
