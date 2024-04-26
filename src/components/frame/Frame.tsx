@@ -3,11 +3,12 @@ import { ParentProps } from 'solid-js';
 export type FrameProps = ParentProps<{
     title: string;
     theme: 'light' | 'dark';
+    class?: string;
 }>;
 
 export function Frame(props: FrameProps) {
     return (
-        <div class={`flex flex-col overflow-hidden rounded-md ${props.theme}`}>
+        <div class={`flex flex-col overflow-hidden rounded-lg ${props.theme} shadow-lg ${props.class || ''}`}>
             <div class="flex flex-row items-center justify-start relative h-[45px] bg-frame-head gap-5 px-4">
                 <svg viewBox="0 0 420 100" class="inline-block align-middle w-[55px] h-auto">
                     <circle fill="#ff5f57" cx="50" cy="50" r="50"></circle>

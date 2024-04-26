@@ -63,7 +63,10 @@ export function HighlightCode(props: HighlightCodeProps) {
                     });
                 }, 100);
             },
-            onComplete: () => {
+            onComplete: (...args) => {
+                if (userOptions.onComplete) {
+                    userOptions.onComplete(...args);
+                }
                 clearInterval(timmer);
             },
         });
