@@ -23,7 +23,9 @@
     "main": "./dist/index.js",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "vite build",
         "commit": "commit",
@@ -68,7 +70,9 @@
     },
     "packageManager": "pnpm@9.0.4",
     "dependencies": {
+        "@solidjs/router": "^0.13.2",
         "highlight.js": "11.9.0",
+        "html2canvas": "^1.4.1",
         "monaco-editor": "^0.48.0",
         "solid-js": "^1.8.12",
         "typed.js": "^2.1.0"

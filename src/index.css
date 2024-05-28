@@ -22,3 +22,24 @@
         background: #201b15ff;
     }
 }
+
+@layer components {
+    .code-bg {
+        @apply mx-auto w-[100vw] h-[100vh] flex flex-col p-6;
+        background-color: rgb(153, 255, 219);
+        background-image: radial-gradient(at 18% 56%, rgb(94, 253, 250) 0px, transparent 50%),
+                          radial-gradient(at 2% 85%, rgb(158, 126, 231) 0px, transparent 50%),
+                          radial-gradient(at 5% 32%, rgb(237, 125, 127) 0px, transparent 50%),
+                          radial-gradient(at 93% 20%, rgb(249, 154, 190) 0px, transparent 50%),
+                          radial-gradient(at 84% 18%, rgb(247, 126, 152) 0px, transparent 50%),
+                          radial-gradient(at 8% 57%, rgb(166, 132, 235) 0px, transparent 50%),
+                          radial-gradient(at 95% 8%, rgb(246, 129, 106) 0px, transparent 50%);
+    }
+    .code-head {
+        color: whitesmoke;
+        @apply font-bold w-[100%] my-8;
+    }
+    .code-frame {
+        @apply my-4;
+    }
+}

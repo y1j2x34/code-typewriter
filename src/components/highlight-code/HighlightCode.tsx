@@ -36,17 +36,15 @@ export function HighlightCode(props: HighlightCodeProps) {
         loadTheme(props.theme);
     });
     createEffect(() => {
-        if (!props.typewriter) {
-            return;
-        }
-        if (!props.code) {
-            return;
-        }
         if (!codeElement) {
             return;
         }
         const code = highlightCode();
         if (!code) {
+            return;
+        }
+        if (!props.typewriter) {
+            codeElement.innerHTML = code;
             return;
         }
         const userOptions = typeof props.typewriter === 'boolean' ? {} : props.typewriter;
