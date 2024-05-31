@@ -3,9 +3,8 @@ import { HighlightCode } from '@/components/highlight-code/HighlightCode';
 import mainCode from './codes/main.js?raw';
 import worker1Code from './codes/worker1.js?raw';
 import worker2Code from './codes/worker2.js?raw';
-import html2canvas from 'html2canvas';
 
-export default function Comunication() {
+export default function MessageChannelPage() {
     let element: HTMLDivElement | undefined;
     return (
         <>
@@ -15,7 +14,7 @@ export default function Comunication() {
                 </h2>
                 <Frame title="main.js" theme="dark" class="code-frame">
                     <HighlightCode
-                        class="py-[21px] w-full max-h-96"
+                        class="py-[21px] w-full"
                         code={mainCode}
                         language="javascript"
                         theme="base16/dracula"
@@ -28,7 +27,7 @@ export default function Comunication() {
                         class="py-2 w-full"
                         code={worker1Code}
                         language="javascript"
-                        theme="base16/darcula"
+                        theme="base16/dracula"
                         typewriter={false}
                     ></HighlightCode>
                 </Frame>
@@ -38,7 +37,7 @@ export default function Comunication() {
                         class="py-2 w-full"
                         code={worker2Code}
                         language="javascript"
-                        theme="base16/darcula"
+                        theme="base16/dracula"
                         typewriter={false}
                     ></HighlightCode>
                 </Frame>

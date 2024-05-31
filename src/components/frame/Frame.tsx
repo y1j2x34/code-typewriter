@@ -46,7 +46,7 @@ export function Frame(props: FrameProps) {
                     </button>
                 </div>
             </div>
-            <div class="flex flex-grow-1 overflow-hidden text-left">{props.children}</div>
+            <div class="flex flex-1 overflow-hidden text-left mt-[-1px]">{props.children}</div>
         </div>
     );
 }

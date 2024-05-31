@@ -82,7 +82,7 @@ export function HighlightCode(props: HighlightCodeProps) {
             <div class="mb-0 p-4 block min-h-full overflow-auto relative">
                 <code
                     ref={codeElement}
-                    class=" whitespace-pre-wrap break-all overflow-hidden block max-w-full h-full"
+                    class=" whitespace-pre-wrap break-all overflow-hidden block max-w-full h-full text-xl"
                 ></code>
             </div>
         </pre>

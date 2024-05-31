@@ -37,9 +37,12 @@
     }
     .code-head {
         color: whitesmoke;
-        @apply font-bold w-[100%] my-8;
+        @apply font-bold w-[100%] my-8 text-2xl;
     }
     .code-frame {
         @apply my-4;
+    }
+    #root {
+        @apply flex flex-wrap;
     }
 }
